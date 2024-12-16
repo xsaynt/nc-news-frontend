@@ -3,13 +3,27 @@ import './App.css';
 import { Header } from './Header';
 import { HomeArticles } from './HomeArticles';
 import { SingleArticle } from './SingleArticle';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
-	const [articles, setArticles] = useState([]);
+	const [articles, setArticles] = useState(null);
 	return (
 		<div>
 			<Header />
-			<HomeArticles articles={articles} setArticles={setArticles} />
+			<Routes>
+				<Route
+					path='/'
+					element={
+						<HomeArticles articles={articles} setArticles={setArticles} />
+					}
+				/>
+				<Route
+					path='/:article_id'
+					element={
+						<SingleArticle articles={articles} setArticles={setArticles} />
+					}
+				/>
+			</Routes>
 		</div>
 	);
 }
