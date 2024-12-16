@@ -1,6 +1,6 @@
 import { allArticles } from './Api';
 import { useEffect } from 'react';
-import { SingleArticle } from './SingleArticle';
+import { ArticleCard } from './ArticleCard';
 
 export const HomeArticles = ({ articles, setArticles }) => {
 	useEffect(() => {
@@ -9,10 +9,14 @@ export const HomeArticles = ({ articles, setArticles }) => {
 		});
 	}, [setArticles]);
 
+	if (!articles) {
+		return <p>Loading article...</p>;
+	}
+
 	return (
 		<ul>
 			{articles.map((article) => {
-				return <SingleArticle key={article.article_id} article={article} />;
+				return <ArticleCard key={article.article_id} article={article} />;
 			})}
 		</ul>
 	);

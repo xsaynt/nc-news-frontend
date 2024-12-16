@@ -1,16 +1,28 @@
-export const SingleArticle = ({ article }) => {
-	console.log(article);
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { oneArticle } from './Api';
+import { SingleArticleCard } from './SingleArticleCard';
+
+export const SingleArticle = ({ articles, setArticles }) => {
+	const { article_id } = useParams();
+
+	useEffect(() => {
+		if (article_id) {
+			oneArticle(article_id).then((response) => {
+				setArticles(response);
+			});
+		}
+	}, [article_id]);
+
+	if (!articles) {
+		return <p>Loading article...</p>;
+	}
+
+	console.log({ articles });
+
 	return (
-		<li className='card'>
-			<h2>{article.title}</h2>
-			<img
-				className='item-image'
-				src={article.article_img_url}
-				alt={`Image of ${article.title}`}
-			></img>
-			<p>Author: {article.author}</p>
-			<p>Comments: {article.comment_count}</p>
-			<p>Votes: {article.votes}</p>
-		</li>
+		<ul>
+			return <SingleArticleCard key={articles.article_id} article={articles} />;
+		</ul>
 	);
 };

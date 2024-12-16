@@ -13,3 +13,14 @@ export const allArticles = () => {
 			return err;
 		});
 };
+
+export const oneArticle = (article_id) => {
+	return articleApi
+		.get(`/api/articles/${article_id}`)
+		.then((response) => {
+			return response.data;
+		})
+		.catch((err) => {
+			return err;
+		});
+};
