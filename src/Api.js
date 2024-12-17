@@ -35,3 +35,14 @@ export const articleComments = (article_id) => {
 			console.log(err);
 		});
 };
+
+export const updateArticleVotes = (article_id, inc_votes) => {
+	return articleApi
+		.patch(`/api/articles/${article_id}`, { inc_votes })
+		.then((response) => {
+			return response.data;
+		})
+		.catch((err) => {
+			console.log(err, 'ERR IN CATCH');
+		});
+};
