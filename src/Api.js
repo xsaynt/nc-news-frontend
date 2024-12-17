@@ -43,6 +43,17 @@ export const updateArticleVotes = (article_id, inc_votes) => {
 			return response.data;
 		})
 		.catch((err) => {
-			console.log(err, 'ERR IN CATCH');
+			console.log(err);
+		});
+};
+
+export const postNewComment = (article_id, comment) => {
+	return articleApi
+		.post(`/api/articles/${article_id}/comments`, comment)
+		.then((response) => {
+			return response.data;
+		})
+		.catch((err) => {
+			console.log(err);
 		});
 };

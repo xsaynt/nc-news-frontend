@@ -33,7 +33,7 @@ export const SingleArticle = ({
 			.finally(() => {
 				setIsLoading(false);
 			});
-	}, [article_id, setArticles, setComments, setIsLoading]);
+	}, [article_id]);
 
 	if (isLoading) {
 		return <p>Loading article...</p>;
