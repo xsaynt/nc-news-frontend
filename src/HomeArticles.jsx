@@ -2,14 +2,24 @@ import { allArticles } from './Api';
 import { useEffect } from 'react';
 import { ArticleCard } from './ArticleCard';
 
-export const HomeArticles = ({ articles, setArticles }) => {
+export const HomeArticles = ({
+	articles,
+	setArticles,
+	isLoading,
+	setIsLoading,
+}) => {
 	useEffect(() => {
-		allArticles().then((response) => {
-			setArticles(response.articles);
-		});
+		setIsLoading(true);
+		allArticles()
+			.then((response) => {
+				setArticles(response.articles);
+			})
+			.finally(() => {
+				setIsLoading(false);
+			});
 	}, [setArticles]);
 
-	if (!articles) {
+	if (isLoading) {
 		return <p>Loading article...</p>;
 	}
 

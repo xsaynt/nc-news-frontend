@@ -21,7 +21,7 @@ export const oneArticle = (article_id) => {
 			return response.data;
 		})
 		.catch((err) => {
-			return err;
+			console.log(err);
 		});
 };
 
@@ -32,6 +32,6 @@ export const articleComments = (article_id) => {
 			return response.data;
 		})
 		.catch((err) => {
-			return err;
+			console.log(err);
 		});
 };
