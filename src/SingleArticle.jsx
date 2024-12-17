@@ -1,26 +1,56 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { oneArticle } from './Api';
+import { oneArticle, articleComments } from './Api';
 import { SingleArticleCard } from './SingleArticleCard';
+import { CommentCard } from './CommentCard';
 
-export const SingleArticle = ({ articles, setArticles }) => {
+export const SingleArticle = ({
+	comments,
+	setComments,
+	isLoading,
+	setIsLoading,
+}) => {
 	const { article_id } = useParams();
+	const [article, setArticle] = useState(null);
 
 	useEffect(() => {
-		if (article_id) {
-			oneArticle(article_id).then((response) => {
-				setArticles(response);
+		setIsLoading(true);
+
+		oneArticle(article_id)
+			.then((response) => {
+				setArticle(response.article);
+			})
+			.catch((err) => {
+				console.log(err);
 			});
-		}
+
+		articleComments(article_id)
+			.then((response) => {
+				setComments(response);
+			})
+			.finally(() => {
+				setIsLoading(false);
+			});
 	}, [article_id]);
 
-	if (!articles) {
+	if (isLoading) {
 		return <p>Loading article...</p>;
+	}
+
+	if (!article) {
+		return <p>Sorry, no articles available.</p>;
+	}
+
+	if (!comments) {
+		return <p>Sorry, no comments available.</p>;
 	}
 
 	return (
 		<ul>
-			<SingleArticleCard key={articles.article_id} article={articles} />
+			<SingleArticleCard article={article} />
+			{comments.map((comment) => {
+				return <CommentCard key={comment.comment_id} comment={comment} />;
+			})}
 		</ul>
 	);
 };

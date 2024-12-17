@@ -4,10 +4,11 @@ import { Header } from './Header';
 import { HomeArticles } from './HomeArticles';
 import { SingleArticle } from './SingleArticle';
 import { Routes, Route } from 'react-router-dom';
-import { ArticleComments } from './ArticleComments';
 
 function App() {
 	const [articles, setArticles] = useState(null);
+	const [comments, setComments] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
 	return (
 		<div>
 			<Header />
@@ -15,19 +16,25 @@ function App() {
 				<Route
 					path='/'
 					element={
-						<HomeArticles articles={articles} setArticles={setArticles} />
+						<HomeArticles
+							articles={articles}
+							setArticles={setArticles}
+							isLoading={isLoading}
+							setIsLoading={setIsLoading}
+						/>
 					}
 				/>
 				<Route
 					path='/:article_id'
 					element={
-						<SingleArticle articles={articles} setArticles={setArticles} />
-					}
-				/>
-				<Route
-					path='/:article_id/comments'
-					element={
-						<ArticleComments articles={articles} setArticles={setArticles} />
+						<SingleArticle
+							articles={articles}
+							setArticles={setArticles}
+							comments={comments}
+							setComments={setComments}
+							isLoading={isLoading}
+							setIsLoading={setIsLoading}
+						/>
 					}
 				/>
 			</Routes>
