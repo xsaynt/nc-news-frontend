@@ -18,11 +18,9 @@ export const SingleArticle = ({ articles, setArticles }) => {
 		return <p>Loading article...</p>;
 	}
 
-	console.log({ articles });
-
 	return (
 		<ul>
-			return <SingleArticleCard key={articles.article_id} article={articles} />;
+			<SingleArticleCard key={articles.article_id} article={articles} />
 		</ul>
 	);
 };

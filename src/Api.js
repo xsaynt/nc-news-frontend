@@ -24,3 +24,14 @@ export const oneArticle = (article_id) => {
 			return err;
 		});
 };
+
+export const articleComments = (article_id) => {
+	return articleApi
+		.get(`/api/articles/${article_id}/comments`)
+		.then((response) => {
+			return response.data;
+		})
+		.catch((err) => {
+			return err;
+		});
+};
