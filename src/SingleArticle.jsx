@@ -9,6 +9,8 @@ export const SingleArticle = ({
 	setComments,
 	isLoading,
 	setIsLoading,
+	articles,
+	setArticles,
 }) => {
 	const { article_id } = useParams();
 	const [article, setArticle] = useState(null);
@@ -31,7 +33,7 @@ export const SingleArticle = ({
 			.finally(() => {
 				setIsLoading(false);
 			});
-	}, [article_id]);
+	}, [article_id, setArticles, setComments, setIsLoading]);
 
 	if (isLoading) {
 		return <p>Loading article...</p>;
@@ -47,7 +49,7 @@ export const SingleArticle = ({
 
 	return (
 		<ul>
-			<SingleArticleCard article={article} />
+			<SingleArticleCard article={article} setArticle={setArticle} />
 			{comments.map((comment) => {
 				return <CommentCard key={comment.comment_id} comment={comment} />;
 			})}
