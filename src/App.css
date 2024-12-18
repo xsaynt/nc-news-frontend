@@ -162,11 +162,31 @@ ul li {
 	padding: 10px;
 }
 
+header {
+	background: linear-gradient(90deg, #e63946, #d62828);
+	color: white;
+	padding: 20px 10%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+	margin: 0;
+	font-size: 2.5rem;
+	letter-spacing: 1px;
+	font-weight: 700;
+}
+
 header a {
-	padding: 10px;
+	color: white;
 	text-decoration: none;
-	color: inherit;
-	display: block;
+	transition: color 0.3s ease;
+}
+
+header a:hover {
+	color: #f1faee;
 }
 
 nav a {
@@ -202,4 +222,26 @@ nav a:last-child {
 	width: 100%;
 	padding: 0;
 	margin: 0;
+}
+
+.username {
+	font-size: 1.2rem;
+	font-weight: 600;
+	color: #f1faee;
+	letter-spacing: 0.5px;
+}
+
+.website-logo {
+	width: 60px;
+	height: 60px;
+	object-fit: contain;
+	border-radius: 50%;
+	transition: transform 0.3s ease;
+}
+
+.website-logo:hover {
+	transform: scale(1.1);
+}
+.user-profile {
+	display: inline-flex;
 }
