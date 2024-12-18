@@ -45,7 +45,8 @@ button {
 	font-family: 'Arial', sans-serif;
 }
 button:hover {
-	border-color: #646cff;
+	border-color: #dc2232;
+	border-width: 3px;
 }
 button:focus,
 button:focus-visible {
