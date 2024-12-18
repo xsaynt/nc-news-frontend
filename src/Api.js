@@ -36,3 +36,7 @@ export const deleteComment = (article_id, comment_id) => {
 		.delete(`/api/articles/${article_id}/comments/${comment_id}`)
 		.then((response) => response.data || null);
 };
+
+export const allTopics = () => {
+	return articleApi.get('/api/topics').then((response) => response.data);
+};
