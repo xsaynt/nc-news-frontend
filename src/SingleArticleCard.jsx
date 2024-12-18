@@ -1,35 +1,13 @@
-import { useState } from 'react';
 import { updateArticleVotes } from './Api';
-import { postNewComment } from './Api';
+import { PostComment } from './PostComment';
 
 export const SingleArticleCard = ({ article, setArticle }) => {
-	const [newComment, setNewComment] = useState('');
-	const [comments, setComments] = useState([]);
-
 	const handleVote = () => {
 		setArticle((currentArticle) => ({
 			...currentArticle,
 			votes: currentArticle.votes + 1,
 		}));
 		updateArticleVotes(article.article_id, 1);
-	};
-
-	const handleChange = (e) => {
-		setNewComment(e.target.value);
-	};
-
-	const handleSubmit = (e) => {
-		e.preventDefault();
-
-		const commentData = {
-			username: 'cooljmessy',
-			body: newComment,
-		};
-
-		postNewComment(article.article_id, commentData).then((newComment) => {
-			setComments((currComment) => [...currComment, newComment]);
-			setNewComment('');
-		});
 	};
 
 	return (
@@ -48,19 +26,7 @@ export const SingleArticleCard = ({ article, setArticle }) => {
 				<button onClick={handleVote}>Upvote!</button>
 				<p className='single-section'></p>
 			</li>
-
-			<section>
-				<form onSubmit={handleSubmit} className='comment-form'>
-					<h3>Post a new comment</h3>
-					<textarea
-						onChange={handleChange}
-						value={newComment}
-						required
-						placeholder='Write your comment here'
-					/>
-					<button type='submit'>Post Comment</button>
-				</form>
-			</section>
+			<PostComment article={article} />
 		</section>
 	);
 };
