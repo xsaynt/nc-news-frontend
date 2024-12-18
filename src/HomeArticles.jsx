@@ -1,5 +1,5 @@
 import { allArticles } from './Api';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { ArticleCard } from './ArticleCard';
 
 export const HomeArticles = ({
@@ -8,19 +8,29 @@ export const HomeArticles = ({
 	isLoading,
 	setIsLoading,
 }) => {
+	const [error, setError] = useState(null);
+
 	useEffect(() => {
 		setIsLoading(true);
 		allArticles()
 			.then((response) => {
 				setArticles(response.articles);
 			})
+			.catch((err) => {
+				console.error('Error fetching articles:', err);
+				setError('Failed to fetch articles');
+			})
 			.finally(() => {
 				setIsLoading(false);
 			});
-	}, [setArticles]);
+	}, [setArticles, setError]);
 
 	if (isLoading) {
 		return <p>Loading article...</p>;
+	}
+
+	if (error) {
+		return <p style={{ color: 'red' }}>{error}</p>;
 	}
 
 	return (

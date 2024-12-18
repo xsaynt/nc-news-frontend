@@ -9,11 +9,16 @@ export const SingleArticle = ({
 	setComments,
 	isLoading,
 	setIsLoading,
-	articles,
-	setArticles,
 }) => {
 	const { article_id } = useParams();
 	const [article, setArticle] = useState(null);
+	const [error, setError] = useState(null);
+
+	const onCommentDelete = (deletedCommentId) => {
+		setComments((currComments) =>
+			currComments.filter((comment) => comment.comment_id !== deletedCommentId)
+		);
+	};
 
 	useEffect(() => {
 		setIsLoading(true);
@@ -30,10 +35,18 @@ export const SingleArticle = ({
 			.then((response) => {
 				setComments(response);
 			})
+			.catch((err) => {
+				console.error('Error fetching article:', err);
+				setError('Failed to fetch article');
+			})
 			.finally(() => {
 				setIsLoading(false);
 			});
-	}, [article_id]);
+	}, [article_id, setError]);
+
+	if (error) {
+		return <p style={{ color: 'red' }}>{error}</p>;
+	}
 
 	if (isLoading) {
 		return <p>Loading article...</p>;
@@ -51,7 +64,14 @@ export const SingleArticle = ({
 		<ul>
 			<SingleArticleCard article={article} setArticle={setArticle} />
 			{comments.map((comment) => {
-				return <CommentCard key={comment.comment_id} comment={comment} />;
+				return (
+					<CommentCard
+						key={comment.comment_id}
+						comment={comment}
+						article_id={article_id}
+						onCommentDelete={onCommentDelete}
+					/>
+				);
 			})}
 		</ul>
 	);
