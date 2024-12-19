@@ -2,7 +2,7 @@ import { allArticles } from './Api';
 import { useEffect, useState } from 'react';
 import { ArticleCard } from './ArticleCard';
 import { ShowTopics } from './ShowTopics';
-// import { SortArticles } from './SortArticles';
+import { SortArticles } from './SortArticles';
 
 export const HomeArticles = () => {
 	const [articles, setArticles] = useState(null);
@@ -52,7 +52,7 @@ export const HomeArticles = () => {
 	return (
 		<section>
 			<ShowTopics setSelectedTopic={setSelectedTopic} />
-			{/* <SortArticles setSelectedSort={setSelectedSort} /> */}
+			<SortArticles setSelectedSort={setSelectedSort} />
 			<ul>
 				{filteredArticle.map((article) => {
 					return <ArticleCard key={article.article_id} article={article} />;
