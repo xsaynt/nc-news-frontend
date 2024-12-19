@@ -26,7 +26,7 @@ export const HomeArticles = () => {
 			.finally(() => {
 				setIsLoading(false);
 			});
-	}, [setArticles, setIsLoading]);
+	}, []);
 
 	useEffect(() => {
 		if (selectedTopic) {

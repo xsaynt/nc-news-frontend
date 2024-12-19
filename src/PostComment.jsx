@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import { postNewComment } from './Api';
+import { articleComments, postNewComment } from './Api';
 
-export const PostComment = ({ article }) => {
+export const PostComment = ({ article, setComments }) => {
 	const [newComment, setNewComment] = useState('');
 	const [isPosting, setIsPosting] = useState(false);
-	const [comments, setComments] = useState([]);
 	const [error, setError] = useState(null);
 	const [successMsg, setSuccessMsg] = useState('');
 
@@ -23,13 +22,40 @@ export const PostComment = ({ article }) => {
 			body: newComment,
 		};
 
+		const tempComment = {
+			comment_id: Date.now(),
+			body: newComment,
+			article_id: article.article_id,
+			author: 'cooljmessy',
+			votes: 0,
+			created_at: new Date().toISOString(),
+		};
+
+		setComments((currComments) => {
+			const updatedComment = [...currComments, tempComment];
+			console.log(updatedComment);
+			return updatedComment;
+		});
+		setNewComment('');
+
 		postNewComment(article.article_id, commentData)
-			.then((newComment) => {
-				setComments((currComment) => [...currComment, newComment]);
-				setNewComment('');
+			.then(() => {
+				articleComments(article.article_id)
+					.then((response) => {
+						setComments(response);
+					})
+					.catch((err) => {
+						setError('Failed to fetch comments');
+						console.error('Error fetching comments');
+					});
 				setSuccessMsg('Comment posted successfully.');
 			})
 			.catch((err) => {
+				setComments((currComments) =>
+					currComments.filter(
+						(comment) => comment.comment_id !== tempComment.comment_id
+					)
+				);
 				setError('Failed to post comment');
 				console.error('Error posting comment:', err);
 			})

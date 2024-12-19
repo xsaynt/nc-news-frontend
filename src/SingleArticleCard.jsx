@@ -1,5 +1,4 @@
 import { updateArticleVotes } from './Api';
-import { PostComment } from './PostComment';
 
 export const SingleArticleCard = ({ article, setArticle }) => {
 	const handleVote = () => {
@@ -12,7 +11,7 @@ export const SingleArticleCard = ({ article, setArticle }) => {
 
 	return (
 		<section>
-			<li className='single-card'>
+			<div className='single-card'>
 				<h2>{article.title}</h2>
 				<p className='single-date'>{article.created_at.split('T')[0]}</p>
 				<img
@@ -25,8 +24,7 @@ export const SingleArticleCard = ({ article, setArticle }) => {
 				<p className='single-section'>Votes: {article.votes}</p>
 				<button onClick={handleVote}>Upvote!</button>
 				<p className='single-section'></p>
-			</li>
-			<PostComment article={article} />
+			</div>
 		</section>
 	);
 };

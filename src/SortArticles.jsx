@@ -1,3 +1,5 @@
+import { useSearchParams } from 'react-router-dom';
+
 export const SortArticles = (
 	articles,
 	setArticles,

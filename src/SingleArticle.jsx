@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { oneArticle, articleComments } from './Api';
 import { SingleArticleCard } from './SingleArticleCard';
 import { CommentCard } from './CommentCard';
+import { PostComment } from './PostComment';
 
 export const SingleArticle = () => {
 	const { article_id } = useParams();
@@ -26,20 +27,25 @@ export const SingleArticle = () => {
 			})
 			.catch((err) => {
 				console.log(err);
+				setError('Failed to fetch article');
 			});
+	}, [article_id]);
+
+	useEffect(() => {
+		setIsLoading(true);
 
 		articleComments(article_id)
 			.then((response) => {
 				setComments(response);
 			})
 			.catch((err) => {
-				console.error('Error fetching article:', err);
+				console.log(err);
 				setError('Failed to fetch article');
 			})
 			.finally(() => {
 				setIsLoading(false);
 			});
-	}, [article_id, setError]);
+	}, [article_id]);
 
 	if (error) {
 		return <p style={{ color: 'red' }}>{error}</p>;
@@ -60,10 +66,11 @@ export const SingleArticle = () => {
 	return (
 		<ul>
 			<SingleArticleCard article={article} setArticle={setArticle} />
-			{comments.map((comment) => {
+			<PostComment article={article} setComments={setComments} />
+			{comments.map((comment, index) => {
 				return (
 					<CommentCard
-						key={comment.comment_id}
+						key={index}
 						comment={comment}
 						article_id={article_id}
 						onCommentDelete={onCommentDelete}
