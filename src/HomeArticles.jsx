@@ -52,7 +52,7 @@ export const HomeArticles = () => {
 	return (
 		<section>
 			<ShowTopics setSelectedTopic={setSelectedTopic} />
-			{/* <SortArticles setSelectedSort={setSelectedSort}/> */}
+			<SortArticles setSelectedSort={setSelectedSort} />
 			<ul>
 				{filteredArticle.map((article) => {
 					return <ArticleCard key={article.article_id} article={article} />;
