@@ -2,16 +2,15 @@ import { allArticles } from './Api';
 import { useEffect, useState } from 'react';
 import { ArticleCard } from './ArticleCard';
 import { ShowTopics } from './ShowTopics';
+import { SortArticles } from './SortArticles';
 
-export const HomeArticles = ({
-	articles,
-	setArticles,
-	isLoading,
-	setIsLoading,
-}) => {
-	const [filteredArticle, setFilteredArticles] = useState(articles);
+export const HomeArticles = () => {
+	const [articles, setArticles] = useState(null);
 	const [selectedTopic, setSelectedTopic] = useState('');
 	const [error, setError] = useState(null);
+	const [selectedSort, setSelectedSort] = useState('');
+	const [isLoading, setIsLoading] = useState(true);
+	const [filteredArticle, setFilteredArticles] = useState(articles);
 
 	useEffect(() => {
 		setIsLoading(true);
@@ -40,6 +39,8 @@ export const HomeArticles = ({
 		}
 	}, [selectedTopic, articles]);
 
+	useEffect(() => {});
+
 	if (isLoading) {
 		return <p>Loading article...</p>;
 	}
@@ -51,6 +52,7 @@ export const HomeArticles = ({
 	return (
 		<section>
 			<ShowTopics setSelectedTopic={setSelectedTopic} />
+			{/* <SortArticles setSelectedSort={setSelectedSort}/> */}
 			<ul>
 				{filteredArticle.map((article) => {
 					return <ArticleCard key={article.article_id} article={article} />;

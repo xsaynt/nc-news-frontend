@@ -4,15 +4,12 @@ import { oneArticle, articleComments } from './Api';
 import { SingleArticleCard } from './SingleArticleCard';
 import { CommentCard } from './CommentCard';
 
-export const SingleArticle = ({
-	comments,
-	setComments,
-	isLoading,
-	setIsLoading,
-}) => {
+export const SingleArticle = () => {
 	const { article_id } = useParams();
 	const [article, setArticle] = useState(null);
 	const [error, setError] = useState(null);
+	const [comments, setComments] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
 
 	const onCommentDelete = (deletedCommentId) => {
 		setComments((currComments) =>

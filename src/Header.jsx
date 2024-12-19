@@ -6,7 +6,7 @@ export const Header = () => {
 		<header>
 			<section className='user-profile'>
 				<h1>
-					<Link to={`/`}>NC News</Link>
+					<Link to={`/articles`}>NC News</Link>
 				</h1>
 				<img src={ncLogo} alt='Northcoders Logo' className='website-logo' />
 			</section>

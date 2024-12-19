@@ -1,13 +1,22 @@
 import { useEffect, useState } from 'react';
 import { allTopics } from './Api';
+import { useNavigate } from 'react-router-dom';
 
 export const ShowTopics = ({ setSelectedTopic }) => {
 	const [topics, setTopics] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState(null);
 
+	const navigate = useNavigate();
+
 	const handleChange = (e) => {
-		setSelectedTopic(e.target.value);
+		const topicValue = e.target.value;
+		setSelectedTopic(topicValue);
+		if (topicValue) {
+			navigate(`/topics/${topicValue}`);
+		} else {
+			navigate('/articles');
+		}
 	};
 
 	useEffect(() => {

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 export const ArticleCard = ({ article }) => {
 	return (
 		<li className='card'>
-			<Link to={`/${article.article_id}`} className='card-link'>
+			<Link to={`/articles/${article.article_id}`} className='card-link'>
 				<h2>{article.title}</h2>
 				<img
 					className='item-image'
