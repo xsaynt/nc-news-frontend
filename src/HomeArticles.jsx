@@ -11,14 +11,24 @@ export const HomeArticles = () => {
 	const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
 	const [filteredArticle, setFilteredArticles] = useState(articles);
+
 	const [searchParams, setSearchParams] = useSearchParams();
 
-	const selectedSort = searchParams.get('sort_by') || 'created_at';
-	const selectedOrder = searchParams.get('order') || 'desc';
+	const [selectedSort, setSelectedSort] = useState(
+		searchParams.get('sort_by') || 'created_at'
+	);
+	const [selectedOrder, setSelectedOrder] = useState(
+		searchParams.get('order') || 'desc'
+	);
 
 	useEffect(() => {
 		setIsLoading(true);
-		allArticles(selectedSort, selectedOrder)
+		const sortBy = searchParams.get('sort_by') || 'created_at';
+		const order = searchParams.get('order') || 'desc';
+		setSelectedSort(sortBy);
+		setSelectedOrder(order);
+
+		allArticles(sortBy, order)
 			.then((response) => {
 				setArticles(response.articles);
 				setFilteredArticles(response.articles);
@@ -33,7 +43,7 @@ export const HomeArticles = () => {
 			.finally(() => {
 				setIsLoading(false);
 			});
-	}, [selectedSort, selectedOrder]);
+	}, [searchParams]);
 
 	useEffect(() => {
 		if (selectedTopic) {

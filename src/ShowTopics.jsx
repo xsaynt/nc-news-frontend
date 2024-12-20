@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { allTopics } from './Api';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
 export const ShowTopics = ({ setSelectedTopic, selectedTopic }) => {
 	const [topics, setTopics] = useState([]);
@@ -8,6 +8,7 @@ export const ShowTopics = ({ setSelectedTopic, selectedTopic }) => {
 	const [error, setError] = useState(null);
 	const [searchParams, setSearchParams] = useSearchParams();
 	const navigate = useNavigate();
+	const location = useLocation();
 
 	useEffect(() => {
 		allTopics()
@@ -23,14 +24,20 @@ export const ShowTopics = ({ setSelectedTopic, selectedTopic }) => {
 			});
 	}, []);
 
+	useEffect(() => {
+		const topicFromUrl = searchParams.get('topic');
+		setSelectedTopic(topicFromUrl || '');
+	}, [searchParams, setSelectedTopic]);
+
 	const handleChange = (e) => {
 		const topicValue = e.target.value;
 		setSelectedTopic(topicValue);
+
 		if (topicValue) {
 			searchParams.set('topic', topicValue);
 			setSearchParams(searchParams);
-			navigate(`/topics/${topicValue}`);
-		} else {
+			navigate(`/topics/${topicValue}?${searchParams.toString()}`);
+		} else if (!topicValue) {
 			searchParams.delete('topic');
 			setSearchParams(searchParams);
 			navigate('/articles');

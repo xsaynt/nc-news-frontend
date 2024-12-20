@@ -1,20 +1,12 @@
-import { useEffect } from 'react';
 import './App.css';
 import { Header } from './Header';
 import { HomeArticles } from './HomeArticles';
 import { SingleArticle } from './SingleArticle';
-import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import { RedirectArticles } from './RedirectArticles';
 
 function App() {
-	const navigate = useNavigate();
-	const location = useLocation();
-
-	useEffect(() => {
-		if (location.pathname === '/') {
-			navigate('/articles');
-		}
-	}, [navigate, location]);
-
+	RedirectArticles();
 	return (
 		<div>
 			<Header />
