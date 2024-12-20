@@ -16,14 +16,14 @@ export const SingleArticleCard = ({ article, setArticle }) => {
 				<p className='single-date'>
 					Posted: {article.created_at.split('T')[0]}
 				</p>
-				<p className='single-section'>Votes: {article.votes}</p>
-				<button onClick={handleVote}>Upvote!</button>
 				<img
 					className='single-item-image'
 					src={article.article_img_url}
 					alt={`Image of ${article.title}`}
 				></img>
 				<p>{article.body}</p>
+				<p className='single-section'>Votes: {article.votes}</p>
+				<button onClick={handleVote}>Upvote!</button>
 				<p className='single-section'></p>
 			</div>
 		</section>
