@@ -3,14 +3,17 @@ import './App.css';
 import { Header } from './Header';
 import { HomeArticles } from './HomeArticles';
 import { SingleArticle } from './SingleArticle';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 
 function App() {
 	const navigate = useNavigate();
+	const location = useLocation();
 
 	useEffect(() => {
-		navigate('/articles');
-	}, [navigate]);
+		if (location.pathname === '/') {
+			navigate('/articles');
+		}
+	}, [navigate, location]);
 
 	return (
 		<div>
