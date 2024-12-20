@@ -23,7 +23,6 @@ export const SortArticles = ({
 		searchParams.set('sort_by', value);
 		setSearchParams(searchParams);
 	};
-	console.log(searchParams.toString());
 
 	const handleOrderChange = (e) => {
 		const value = e.target.value;
@@ -32,7 +31,6 @@ export const SortArticles = ({
 		searchParams.set('order', value);
 		setSearchParams(searchParams);
 	};
-	console.log(searchParams.toString());
 
 	return (
 		<div>

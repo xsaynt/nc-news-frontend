@@ -8,7 +8,6 @@ export const SingleArticleCard = ({ article, setArticle }) => {
 		}));
 		updateArticleVotes(article.article_id, 1);
 	};
-
 	return (
 		<section>
 			<div className='single-card'>
