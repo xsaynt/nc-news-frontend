@@ -1,1 +1,1 @@
-1. Topics dropdown doesn't revert back to all topics
+1. comments aren't re-rendering when posted
