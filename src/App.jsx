@@ -1,10 +1,17 @@
+import { useEffect } from 'react';
 import './App.css';
 import { Header } from './Header';
 import { HomeArticles } from './HomeArticles';
 import { SingleArticle } from './SingleArticle';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 function App() {
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		navigate('/articles');
+	}, [navigate]);
+
 	return (
 		<div>
 			<Header />
