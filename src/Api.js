@@ -3,9 +3,9 @@ import axios from 'axios';
 const articleApi = axios.create({
 	baseURL: 'https://my-nc-news-yn9b.onrender.com',
 });
-export const allArticles = (sort_by, order) => {
+export const allArticles = (sort_by, order, topic) => {
 	return articleApi
-		.get('/api/articles', { params: { sort_by, order } })
+		.get('/api/articles', { params: { sort_by, order, topic } })
 		.then((response) => response.data);
 };
 

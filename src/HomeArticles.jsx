@@ -3,30 +3,37 @@ import { useEffect, useState } from 'react';
 import { ArticleCard } from './ArticleCard';
 import { ShowTopics } from './ShowTopics';
 import { SortArticles } from './SortArticles';
+import { useSearchParams } from 'react-router-dom';
 
 export const HomeArticles = () => {
 	const [articles, setArticles] = useState(null);
 	const [selectedTopic, setSelectedTopic] = useState('');
 	const [error, setError] = useState(null);
-	const [selectedSort, setSelectedSort] = useState('');
 	const [isLoading, setIsLoading] = useState(true);
 	const [filteredArticle, setFilteredArticles] = useState(articles);
+	const [searchParams, setSearchParams] = useSearchParams();
+
+	const selectedSort = searchParams.get('sort_by') || 'created_at';
+	const selectedOrder = searchParams.get('order') || 'desc';
 
 	useEffect(() => {
 		setIsLoading(true);
-		allArticles()
+		allArticles(selectedSort, selectedOrder)
 			.then((response) => {
 				setArticles(response.articles);
 				setFilteredArticles(response.articles);
 			})
 			.catch((err) => {
 				console.error('Error fetching articles:', err);
-				setError('Failed to fetch articles');
+				setError({
+					status: err.response.status,
+					msg: 'Error: Failed to fetch topics',
+				});
 			})
 			.finally(() => {
 				setIsLoading(false);
 			});
-	}, []);
+	}, [selectedSort, selectedOrder]);
 
 	useEffect(() => {
 		if (selectedTopic) {
@@ -39,8 +46,6 @@ export const HomeArticles = () => {
 		}
 	}, [selectedTopic, articles]);
 
-	useEffect(() => {});
-
 	if (isLoading) {
 		return <p>Loading article...</p>;
 	}
@@ -51,8 +56,22 @@ export const HomeArticles = () => {
 
 	return (
 		<section>
-			<ShowTopics setSelectedTopic={setSelectedTopic} />
-			<SortArticles setSelectedSort={setSelectedSort} />
+			<ShowTopics
+				setSelectedTopic={setSelectedTopic}
+				selectedTopic={selectedTopic}
+			/>
+			<SortArticles
+				setSelectedSort={(sort) => {
+					searchParams.set('sort_by', sort);
+					setSearchParams(searchParams);
+				}}
+				setSelectedOrder={(order) => {
+					searchParams.set('order', order);
+					setSearchParams(searchParams);
+				}}
+				defaultSort={selectedSort}
+				defaultOrder={selectedOrder}
+			/>
 			<ul>
 				{filteredArticle.map((article) => {
 					return <ArticleCard key={article.article_id} article={article} />;

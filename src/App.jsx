@@ -12,10 +12,6 @@ function App() {
 				<Route path='/articles' element={<HomeArticles />} />
 				<Route path='/articles/:article_id' element={<SingleArticle />} />
 				<Route path='/topics/:slug' element={<HomeArticles />} />
-				<Route
-					path='/articles?sort_by=:value&order=:asc/desc'
-					element={<HomeArticles />}
-				/>
 			</Routes>
 		</div>
 	);

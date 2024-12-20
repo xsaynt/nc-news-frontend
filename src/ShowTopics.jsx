@@ -1,23 +1,13 @@
 import { useEffect, useState } from 'react';
 import { allTopics } from './Api';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
-export const ShowTopics = ({ setSelectedTopic }) => {
+export const ShowTopics = ({ setSelectedTopic, selectedTopic }) => {
 	const [topics, setTopics] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState(null);
-
+	const [searchParams, setSearchParams] = useSearchParams();
 	const navigate = useNavigate();
-
-	const handleChange = (e) => {
-		const topicValue = e.target.value;
-		setSelectedTopic(topicValue);
-		if (topicValue) {
-			navigate(`/topics/${topicValue}`);
-		} else {
-			navigate('/articles');
-		}
-	};
 
 	useEffect(() => {
 		allTopics()
@@ -33,6 +23,20 @@ export const ShowTopics = ({ setSelectedTopic }) => {
 			});
 	}, []);
 
+	const handleChange = (e) => {
+		const topicValue = e.target.value;
+		setSelectedTopic(topicValue);
+		if (topicValue) {
+			searchParams.set('topic', topicValue);
+			setSearchParams(searchParams);
+			navigate(`/topics/${topicValue}`);
+		} else {
+			searchParams.delete('topic');
+			setSearchParams(searchParams);
+			navigate('/articles');
+		}
+	};
+
 	if (isLoading) {
 		return <p>Loading topics...</p>;
 	}
@@ -43,7 +47,7 @@ export const ShowTopics = ({ setSelectedTopic }) => {
 
 	return (
 		<div>
-			<select onChange={handleChange}>
+			<select value={selectedTopic} onChange={handleChange}>
 				<option value=''>All Topics</option>
 				{topics.map((topic) => {
 					return (
