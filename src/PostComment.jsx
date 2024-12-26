@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { articleComments, postNewComment } from './Api';
+import { postNewComment } from './Api';
 
 export const PostComment = ({ article, setComments }) => {
 	const [newComment, setNewComment] = useState('');
@@ -31,23 +31,19 @@ export const PostComment = ({ article, setComments }) => {
 			created_at: new Date().toISOString(),
 		};
 
-		setComments((currComments) => {
-			const updatedComment = [...currComments, tempComment];
-			console.log(updatedComment);
-			return updatedComment;
-		});
+		setComments((currComments) => [...currComments, tempComment]);
+
 		setNewComment('');
 
 		postNewComment(article.article_id, commentData)
-			.then(() => {
-				articleComments(article.article_id)
-					.then((response) => {
-						setComments(response);
-					})
-					.catch((err) => {
-						setError('Failed to fetch comments');
-						console.error('Error fetching comments');
-					});
+			.then((responseComment) => {
+				setComments((currComments) =>
+					currComments.map((comment) =>
+						comment.comment_id === tempComment.comment_id
+							? { ...comment, ...responseComment }
+							: comment
+					)
+				);
 				setSuccessMsg('Comment posted successfully.');
 			})
 			.catch((err) => {

@@ -3,9 +3,8 @@ import { useParams } from 'react-router-dom';
 import { CommentCard } from './CommentCard';
 import { articleComments } from './Api';
 
-export const CommentList = () => {
+export const CommentList = ({ comments, setComments }) => {
 	const { article_id } = useParams();
-	const [comments, setComments] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState(null);
 
@@ -43,6 +42,7 @@ export const CommentList = () => {
 		return <p>Loading comments...</p>;
 	}
 
+	console.log(comments);
 	return (
 		<ul>
 			{comments.map((comment, index) => {

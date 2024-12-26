@@ -17,7 +17,6 @@ export const SingleArticle = () => {
 
 		oneArticle(article_id)
 			.then((response) => {
-				console.log(response);
 				setArticle(response.article);
 			})
 			.catch((err) => {
@@ -41,7 +40,7 @@ export const SingleArticle = () => {
 		<ul>
 			<SingleArticleCard article={article} setArticle={setArticle} />
 			<PostComment article={article} setComments={setComments} />
-			<CommentList />
+			<CommentList comments={comments} setComments={setComments} />
 		</ul>
 	);
 };
