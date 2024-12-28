@@ -1,7 +1,5 @@
 [NC News Frontend Project](https://alexp-nc-news.netlify.app)
 
-<<<<<<< HEAD
-=======
 Welcome to my News Front End Project!
 
 This is my first project, developed during the JavaScript Software Development Bootcamp at Northcoders. It is built on and uses the backend API I created previously within this bootcamp and showcases a responsive, React based news website. Key features include:
@@ -39,5 +37,4 @@ Ctrl + click the localhost link in the terminal to open in your browser.
 
 Thank you for viewing my project!
 
->>>>>>> 11f3eaf (reworking ReadMe)
 This app was created to mimic a news website which includes a variety of articles,
