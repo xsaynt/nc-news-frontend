@@ -31,12 +31,11 @@ export const PostComment = ({ article, setComments }) => {
 			created_at: new Date().toISOString(),
 		};
 
-		setComments((currComments) => [...currComments, tempComment]);
-
-		setNewComment('');
+		setComments((currComments) => [tempComment, ...currComments]);
 
 		postNewComment(article.article_id, commentData)
 			.then((responseComment) => {
+				console.log(responseComment, 'RESPONSE COMMENT');
 				setComments((currComments) =>
 					currComments.map((comment) =>
 						comment.comment_id === tempComment.comment_id
@@ -44,6 +43,7 @@ export const PostComment = ({ article, setComments }) => {
 							: comment
 					)
 				);
+				setNewComment('');
 				setSuccessMsg('Comment posted successfully.');
 			})
 			.catch((err) => {

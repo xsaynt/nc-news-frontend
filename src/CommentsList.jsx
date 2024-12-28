@@ -30,7 +30,7 @@ export const CommentList = ({ comments, setComments }) => {
 			});
 	}, [article_id]);
 
-	if (!comments) {
+	if (!comments || comments.length === 0) {
 		return <p>Sorry, no comments available.</p>;
 	}
 
@@ -42,7 +42,8 @@ export const CommentList = ({ comments, setComments }) => {
 		return <p>Loading comments...</p>;
 	}
 
-	console.log(comments);
+	console.log(comments, 'COMMENTSLIST');
+
 	return (
 		<ul>
 			{comments.map((comment, index) => {
