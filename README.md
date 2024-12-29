@@ -2,7 +2,6 @@
 
 This is my first project developed during the JavaScript Software Development Bootcamp at Northcoders. It is built on and uses the backend API I created previously within this bootcamp and showcases a responsive, React based news website. Key features include:
 
-- Mobile-first responsive design
 - Accessible semantic HTML
 - Reactive elements built according to user stories
 - Reusable components
