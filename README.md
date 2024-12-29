@@ -1,40 +1,40 @@
-[NC News Frontend Project](https://alexp-nc-news.netlify.app)
+# Welcome to my News Website Front End Project!
 
-Welcome to my News Front End Project!
+This is my first project developed during the JavaScript Software Development Bootcamp at Northcoders. It is built on and uses the backend API I created previously within this bootcamp and showcases a responsive, React based news website. Key features include:
 
-This is my first project, developed during the JavaScript Software Development Bootcamp at Northcoders. It is built on and uses the backend API I created previously within this bootcamp and showcases a responsive, React based news website. Key features include:
+- Mobile-first responsive design
+- Accessible semantic HTML
+- Reactive elements built according to user stories
+- Reusable components
+- Implemented React Router for dynamic URLs
+- Loading state and optimistic rendering for enhanced UX
 
-Mobile-first responsive design
-Accessible semantic HTML
-Reactive elements built according to user stories
-Organised file structure and reusable components
-Use of TailwindCSS for a modern approach to styling
-Implemented React Router more shareable and dynamic URLs
-Loading state and optimistic rendering for enhanced UX
+The back end of the project can be found using the following link: [News Website Backend](https://github.com/xsaynt/nc-news-backend).
 
-The back end of the project can be viewed here.
+The hosted site can be found using the following link: [Hosted News Website](https://alexp-nc-news.netlify.app)
 
-The hosted site can be viewed here.
+(Please be patient as there may be a brief loading period for the sight to fully appear.)
 
-(Please note that there may be a small spin-up period when first loading the site.)
+## Requirements for running locally
 
-Requirements for running locally
-`Node.js version v22.9.0 or later`
-Setup
-To clone the repository, start by clicking "Code" at the top of this page and copy the given URL. Then enter the following in your terminal:
+`Node.js version v22.8.0 or later`
 
-git clone https://github.com/xsaynt/nc-news-frontend.git
-code nc-news-frontend
+## Setup
+
+To clone the repository, start by clicking "Code" from my [GitHub](https://github.com/xsaynt/nc-news-frontend) and copy the given URL. Then enter the following in your terminal:
+
+`git clone *copied URL*`
+
+`code nc-news-frontend`
+
 This will clone and open the new folder in VS Code.
 
-Open your terminal in VS Code and run the following command to install dependencies:
+Once the repo has been cloned and is open in VS Code, run the following command to install the required dependencies:
 
-npm install
+`npm install`
 You can then run the local development server with the command:
 
-npm run dev
+`npm run dev`
 Ctrl + click the localhost link in the terminal to open in your browser.
 
-Thank you for viewing my project!
-
-This app was created to mimic a news website which includes a variety of articles,
+### Thank you for viewing my project!
