@@ -42,8 +42,6 @@ export const CommentList = ({ comments, setComments }) => {
 		return <p>Loading comments...</p>;
 	}
 
-	console.log(comments, 'COMMENTSLIST');
-
 	return (
 		<ul>
 			{comments.map((comment, index) => {

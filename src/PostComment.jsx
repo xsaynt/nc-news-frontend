@@ -35,7 +35,6 @@ export const PostComment = ({ article, setComments }) => {
 
 		postNewComment(article.article_id, commentData)
 			.then((responseComment) => {
-				console.log(responseComment, 'RESPONSE COMMENT');
 				setComments((currComments) =>
 					currComments.map((comment) =>
 						comment.comment_id === tempComment.comment_id
