@@ -53,17 +53,20 @@ export const ShowTopics = ({ setSelectedTopic, selectedTopic }) => {
 	}
 
 	return (
-		<div>
-			<select value={selectedTopic} onChange={handleChange}>
-				<option value=''>All Topics</option>
-				{topics.map((topic) => {
-					return (
-						<option key={topic.slug} value={topic.slug}>
-							{topic.slug}
-						</option>
-					);
-				})}
-			</select>
+		<div className='wrap'>
+			<label className='home-dropdown'>
+				<span className='decor'>Topics</span>
+				<select value={selectedTopic} onChange={handleChange}>
+					<option value=''>All Topics</option>
+					{topics.map((topic) => {
+						return (
+							<option key={topic.slug} value={topic.slug}>
+								{topic.slug}
+							</option>
+						);
+					})}
+				</select>
+			</label>
 		</div>
 	);
 };

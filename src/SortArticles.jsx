@@ -33,9 +33,9 @@ export const SortArticles = ({
 	};
 
 	return (
-		<div>
-			<label className='sort-dropdown'>
-				<span>Sort By</span>
+		<div className='wrap'>
+			<label className='home-dropdown'>
+				<span className='decor'>Sort By</span>
 				<select name='sort_by' value={sort_by} onChange={handleSortChange}>
 					<option value='created_at'>Upload Date (Default)</option>
 					<option value='title'>Title</option>
@@ -43,8 +43,8 @@ export const SortArticles = ({
 					<option value='votes'>Votes</option>
 				</select>
 			</label>
-			<label className='order-dropdown'>
-				<span>Order</span>
+			<label className='home-dropdown'>
+				<span className='decor'>Order</span>
 				<select name='order' value={order} onChange={handleOrderChange}>
 					<option value='desc'>Descending (Default)</option>
 					<option value='asc'>Ascending</option>
