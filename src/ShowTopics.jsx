@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { allTopics } from './Api';
-import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 export const ShowTopics = ({ setSelectedTopic, selectedTopic }) => {
 	const [topics, setTopics] = useState([]);
@@ -8,7 +8,6 @@ export const ShowTopics = ({ setSelectedTopic, selectedTopic }) => {
 	const [error, setError] = useState(null);
 	const [searchParams, setSearchParams] = useSearchParams();
 	const navigate = useNavigate();
-	const location = useLocation();
 
 	useEffect(() => {
 		allTopics()
