@@ -57,7 +57,7 @@ export const HomeArticles = () => {
 	}, [selectedTopic, articles]);
 
 	if (isLoading) {
-		return <p>Loading article...</p>;
+		return <p>Loading articles...</p>;
 	}
 
 	if (error) {
@@ -66,22 +66,24 @@ export const HomeArticles = () => {
 
 	return (
 		<section>
-			<ShowTopics
-				setSelectedTopic={setSelectedTopic}
-				selectedTopic={selectedTopic}
-			/>
-			<SortArticles
-				setSelectedSort={(sort) => {
-					searchParams.set('sort_by', sort);
-					setSearchParams(searchParams);
-				}}
-				setSelectedOrder={(order) => {
-					searchParams.set('order', order);
-					setSearchParams(searchParams);
-				}}
-				defaultSort={selectedSort}
-				defaultOrder={selectedOrder}
-			/>
+			<div className='wrap'>
+				<ShowTopics
+					setSelectedTopic={setSelectedTopic}
+					selectedTopic={selectedTopic}
+				/>
+				<SortArticles
+					setSelectedSort={(sort) => {
+						searchParams.set('sort_by', sort);
+						setSearchParams(searchParams);
+					}}
+					setSelectedOrder={(order) => {
+						searchParams.set('order', order);
+						setSearchParams(searchParams);
+					}}
+					defaultSort={selectedSort}
+					defaultOrder={selectedOrder}
+				/>
+			</div>
 			<ul>
 				{filteredArticle.map((article) => {
 					return <ArticleCard key={article.article_id} article={article} />;

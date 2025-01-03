@@ -12,15 +12,15 @@ export const SingleArticleCard = ({ article, setArticle }) => {
 		<section>
 			<div className='single-card'>
 				<h2>{article.title}</h2>
-				<p className='single-author'>Author: {article.author}</p>
-				<p className='single-date'>
-					Posted: {article.created_at.split('T')[0]}
-				</p>
 				<img
 					className='single-item-image'
 					src={article.article_img_url}
 					alt={`Image of ${article.title}`}
 				></img>
+				<p className='single-author'>{article.author}</p>
+				<p className='single-date'>
+					{article.created_at.split('T')[0].split('-').reverse().join('-')}
+				</p>
 				<p>{article.body}</p>
 				<p className='single-section'>Votes: {article.votes}</p>
 				<button onClick={handleVote}>Upvote!</button>

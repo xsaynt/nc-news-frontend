@@ -5,7 +5,10 @@
 #root {
 	margin: 0 auto;
 	padding: 2rem;
-	text-align: center;
+	max-width: 100%;
+	text-align: left;
+	line-height: 1.6;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 ul {
@@ -18,22 +21,29 @@ ul {
 	text-align: left;
 }
 
+.single-card h2 {
+	font-size: 2.5em;
+	font-weight: bold;
+	margin-bottom: 1rem;
+	color: #222;
+	text-align: left;
+}
+
 .single-card {
-	.single-card h2 {
-		font-size: 3em;
-		font-weight: bold;
-		margin-bottom: 0.5em;
-		color: #000;
-		text-align: left;
-	}
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	background-color: #fff;
+	padding: 2rem;
+	margin: 0 auto;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	border-radius: 5px;
+	width: 100%;
 
 	.single-card p {
-		display: inline-block;
-		margin-right: 1.5em;
-		font-size: 0.9em;
-		color: #666;
-		margin-bottom: 1.5em;
-		text-align: left;
+		margin-bottom: 1em;
+		font-size: 1.1rem;
+		color: #333;
 	}
 
 	.single-card p:last-of-type {
@@ -42,53 +52,46 @@ ul {
 		color: #000;
 		text-align: left;
 	}
+}
+.single-item-image {
+	width: 40%;
+	height: auto;
+	margin: 1.5em 0;
+	border-radius: 5px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-	.single-card {
-		padding: 1.5em;
-		margin: 0;
-		width: 100vw;
-		height: 100vh;
-		background-color: #fff;
-		border: 2px solid #000;
-		text-align: center;
-		max-height: 450px;
-		text-align: left;
-	}
+.single-section {
+	font-size: 1em;
+	color: #333;
+	font-weight: bold;
+	text-align: left;
+	border-top: 1px solid #ddd;
+	padding-top: 1em;
+}
+.single-comments {
+	font-size: 1em;
+	color: #333;
+	font-weight: bold;
+	text-align: left;
+	border-top: 1px solid #ddd;
+	padding-top: 1em;
+	text-align: left;
+}
+.single-author {
+	font-size: 1.3rem;
+	color: #222;
+	margin-bottom: 0.5em;
+	font-weight: bold;
+}
 
-	.single-item-image {
-		height: auto;
-		margin: 1.5em 0;
-		border-radius: 5px;
-		display: block;
-	}
-
-	.single-section {
-		font-size: 1em;
-		color: #333;
-		font-weight: bold;
-		text-align: left;
-		border-top: 1px solid #ddd;
-		padding-top: 1em;
-		text-align: left;
-	}
-
-	.single-comments {
-		font-size: 1em;
-		color: #333;
-		font-weight: bold;
-		text-align: left;
-		border-top: 1px solid #ddd;
-		padding-top: 1em;
-		text-align: left;
-	}
-
-	.single-author {
-		font-size: 1em;
-		color: #333;
-		text-align: left;
-		padding-top: 1em;
-		text-align: left;
-	}
+.single-date {
+	font-size: 1rem;
+	color: #777;
+	margin-bottom: 1.5em;
+	font-style: italic;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 1em;
 }
 
 .item-image {
@@ -170,11 +173,12 @@ ul li {
 header {
 	background: linear-gradient(90deg, #e63946, #d62828);
 	color: white;
-	padding: 20px 10%;
+	padding: 20px 1%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	max-width: 100%;
 }
 
 header h1 {
@@ -204,17 +208,23 @@ nav a:last-child {
 
 .comment-card {
 	width: 100%;
-	margin-bottom: 10px;
-	background-color: #f9f9f9;
-	border: 1px solid #ccc;
+	margin-bottom: 1.5em;
+	background-color: #f8f9fa;
+	border: 1px solid #ddd;
 	border-radius: 5px;
-	padding: 10px;
+	padding: 1em;
+	font-size: 1rem;
+	color: #333;
 }
 
-.comment-card h2,
+.comment-card h2 {
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: #555;
+	margin-bottom: 0.5em;
+}
 .comment-card p {
-	margin: 5px 0;
-	text-align: left;
+	margin-bottom: 0.5em;
 }
 
 .comment-body {
@@ -230,7 +240,7 @@ nav a:last-child {
 }
 
 .username {
-	font-size: 1.2rem;
+	font-size: 1rem;
 	font-weight: 600;
 	color: #f1faee;
 	letter-spacing: 0.5px;
@@ -256,8 +266,8 @@ nav a:last-child {
 }
 
 .username-logo {
-	width: 90px;
-	height: 90px;
+	width: 60px;
+	height: 60px;
 	padding: 3%;
 	object-fit: contain;
 	border-radius: 50%;
@@ -276,20 +286,18 @@ nav a:last-child {
 }
 
 .wrap {
-	display: inline-block;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
 	gap: 20px;
-	align-items: center;
-	justify-content: left;
-	margin: 20px;
+	width: 100%;
 }
 
 .home-dropdown {
-	display: inline-block;
+	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 16px;
-	color: #333;
+	width: auto;
 }
 
 .home-dropdown span {
@@ -315,18 +323,31 @@ nav a:last-child {
 	box-shadow: 0 0 8px rgba(255, 69, 0, 0.4);
 }
 
-.home-dropdown select:focus {
-	border-color: #d62828;
-	box-shadow: 0 0 10px rgba(255, 99, 71, 0.5);
-}
-
-.home-dropdown select {
-	background-repeat: no-repeat;
-	background-position: right 10px center;
-	background-size: 10px 10px;
-}
 .decor {
 	padding-right: 5px;
+}
+
+.comment-form {
+	width: 100%;
+	max-width: 600px;
+	margin-top: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.comment-form textarea {
+	width: 100%;
+	padding: 0.8em;
+	margin-bottom: 1em;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	font-size: 1rem;
+	resize: vertical;
+}
+
+.comment-form button:hover {
+	background-color: #b71c1c;
 }
 
 @media (max-width: 600px) {
