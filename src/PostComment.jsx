@@ -68,6 +68,8 @@ export const PostComment = ({ article, setComments }) => {
 					value={newComment}
 					required
 					placeholder='Write your comment here'
+					className='comment-box'
+					maxLength={500}
 				/>
 				<button type='submit' disabled={isPosting}>
 					{isPosting ? 'Posting...' : 'Post Comment'}

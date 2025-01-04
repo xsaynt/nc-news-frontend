@@ -54,11 +54,12 @@ ul {
 	}
 }
 .single-item-image {
-	width: 40%;
-	height: auto;
-	margin: 1.5em 0;
+	width: 100%;
+	height: 500px;
+	max-width: 100%;
 	border-radius: 5px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	object-fit: cover;
 }
 
 .single-section {
@@ -108,7 +109,7 @@ ul {
 	border-radius: 10px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	margin: 20px;
-	width: 700px;
+	width: 555px;
 	padding: 20px;
 	box-sizing: border-box;
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -136,8 +137,8 @@ ul {
 	font-size: 1em;
 	color: #555;
 	line-height: 1.5;
-	margin-bottom: 1em;
-	margin: 5px 0;
+	margin: 10px 0;
+	border-bottom: 1px;
 }
 
 .card a {
@@ -148,7 +149,7 @@ ul {
 	display: inline-block;
 }
 
-.card p:last-of-type {
+.card p:first-of-type {
 	font-size: 1.2em;
 	font-weight: bold;
 	color: #000;
@@ -231,6 +232,8 @@ nav a:last-child {
 	border-bottom: 1px solid #ddd;
 	padding-bottom: 10px;
 	margin-bottom: 10px;
+	word-wrap: break-word;
+	max-width: 1800px;
 }
 
 .comment-ul {
@@ -288,9 +291,10 @@ nav a:last-child {
 .wrap {
 	display: flex;
 	justify-content: center;
-	align-items: flex-start;
+	align-items: center;
 	gap: 20px;
-	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 .home-dropdown {
@@ -298,6 +302,8 @@ nav a:last-child {
 	flex-direction: column;
 	align-items: flex-start;
 	width: auto;
+	margin: 0;
+	text-align: left;
 }
 
 .home-dropdown span {
@@ -328,8 +334,7 @@ nav a:last-child {
 }
 
 .comment-form {
-	width: 100%;
-	max-width: 600px;
+	width: 800px;
 	margin-top: 1.5rem;
 	display: flex;
 	flex-direction: column;
@@ -345,18 +350,39 @@ nav a:last-child {
 	font-size: 1rem;
 	resize: vertical;
 }
+.comment-box {
+	width: 100%;
+	height: 200px;
+	padding: 1em;
+	margin-bottom: 1.5em;
+	border-radius: 8px;
+	border: 2px solid #333;
+	background-color: #fff;
+	font-size: 1rem;
+	color: #333;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
 .comment-form button:hover {
 	background-color: #b71c1c;
 }
 
+.vote-container {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin-top: 10px;
+}
+
+.vote-button {
+	margin-right: 10px;
+}
+
 @media (max-width: 600px) {
 	.wrap {
-		flex-direction: column;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
 		gap: 10px;
-	}
-
-	.home-dropdown select {
-		width: 100%;
 	}
 }
