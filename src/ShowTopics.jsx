@@ -60,7 +60,7 @@ export const ShowTopics = ({ setSelectedTopic, selectedTopic }) => {
 					{topics.map((topic) => {
 						return (
 							<option key={topic.slug} value={topic.slug}>
-								{topic.slug}
+								{topic.slug.charAt(0).toUpperCase() + topic.slug.slice(1)}
 							</option>
 						);
 					})}
