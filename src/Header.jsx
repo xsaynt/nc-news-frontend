@@ -7,7 +7,7 @@ export const Header = () => {
 		<header>
 			<section className='website-logo-name'>
 				<img src={ncLogo} alt='Northcoders Logo' className='website-logo' />
-				<h1>
+				<h1 className='website-name'>
 					<Link to={`/articles`}>NC News</Link>
 				</h1>
 			</section>
