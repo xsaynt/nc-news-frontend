@@ -385,12 +385,12 @@ nav a:last-child {
 	}
 }
 
-@media (min-width: 768px) and (max-width: 1024) {
+@media (min-width: 768px) and (max-width: 1024px) {
 	ul {
 		grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 	}
 	.card {
-		width: 46%;
+		width: 45%;
 		margin: 0.5rem;
 	}
 }
@@ -405,16 +405,6 @@ nav a:last-child {
 		justify-content: center;
 		gap: 10px;
 	}
-	.home-dropdown {
-		flex-direction: column; /* Switch to vertical layout */
-		align-items: flex-start; /* Align items to the left */
-		width: 100%; /* Take full width of the parent container */
-		gap: 0.5rem; /* Smaller spacing between items */
-	}
-
-	.home-dropdown select {
-		width: 100%; /* Allow dropdown to take full width */
-	}
 }
 
 @media (max-width: 480px) {
@@ -423,6 +413,13 @@ nav a:last-child {
 	}
 	.single-card .single-title {
 		font-size: 1.5em;
+	}
+
+	.wrap {
+		flex-direction: column;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 10px;
 	}
 
 	.website-logo {
@@ -448,5 +445,49 @@ nav a:last-child {
 
 	.comment-form .comment-box {
 		width: 35%;
+	}
+
+	@media (max-width: 320px) {
+		ul {
+			grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+		}
+		.single-card .single-title {
+			font-size: 1.5em;
+		}
+
+		.wrap {
+			flex-direction: column;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 10px;
+		}
+
+		.website-logo {
+			margin-bottom: 10px;
+			width: 30px;
+			height: 30px;
+		}
+
+		.website-name {
+			display: flex;
+			align-items: center;
+			font-size: 1.2rem;
+		}
+
+		.username-logo {
+			width: 30px;
+			height: 30px;
+		}
+		.username {
+			font-size: 1em;
+		}
+
+		.single-item-image {
+			height: 100%;
+		}
+
+		.comment-form .comment-box {
+			width: 30%;
+		}
 	}
 }
