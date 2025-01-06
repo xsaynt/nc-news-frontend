@@ -379,7 +379,26 @@ nav a:last-child {
 	margin-right: 10px;
 }
 
-@media (max-width: 600px) {
+@media (min-width: 1025px) {
+	.card {
+		margin: 1rem;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 1024) {
+	ul {
+		grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+	}
+	.card {
+		width: 46%;
+		margin: 0.5rem;
+	}
+}
+
+@media (min-width: 481px) and (max-width: 600px) {
+	ul {
+		grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+	}
 	.wrap {
 		flex-direction: row;
 		flex-wrap: wrap;
@@ -388,10 +407,12 @@ nav a:last-child {
 	}
 }
 
-@media (max-width: 375px) {
-	header {
-		flex-direction: row;
-		text-align: center;
+@media (max-width: 480px) {
+	ul {
+		grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+	}
+	.single-card .single-title {
+		font-size: 1.5em;
 	}
 
 	.website-logo {
@@ -411,9 +432,11 @@ nav a:last-child {
 		height: 50px;
 	}
 
-	@media (min-width: 768px) {
-		ul {
-			grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-		}
+	.single-item-image {
+		height: 100%;
+	}
+
+	.comment-form .comment-box {
+		width: 35%;
 	}
 }

@@ -25,7 +25,7 @@ export const SingleArticleCard = ({ article, setArticle }) => {
 	return (
 		<section>
 			<div className='single-card'>
-				<h2>{article.title}</h2>
+				<h2 className='single-title'>{article.title}</h2>
 				<img
 					className='single-item-image'
 					src={article.article_img_url}
