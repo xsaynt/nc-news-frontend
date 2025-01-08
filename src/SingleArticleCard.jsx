@@ -43,14 +43,14 @@ export const SingleArticleCard = ({ article, setArticle }) => {
 						className='vote-button'
 						disabled={hasVoted}
 					>
-						{hasVoted ? 'Voted!' : 'Upvote'}
+						{hasVoted ? 'Thank you for voting!' : 'Upvote'}
 					</button>
 					<button
 						onClick={handleDownvote}
 						className='vote-button'
 						hidden={hasVoted}
 					>
-						{hasVoted ? 'Voted!' : 'Downvote'}
+						{hasVoted ? 'Thank you for voting!' : 'Downvote'}
 					</button>
 				</div>
 				<p className='single-section'></p>
