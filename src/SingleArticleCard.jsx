@@ -48,7 +48,7 @@ export const SingleArticleCard = ({ article, setArticle }) => {
 					<button
 						onClick={handleDownvote}
 						className='vote-button'
-						hidden={hasVoted}
+						hidden={hasVoted || article.votes === 0}
 					>
 						{hasVoted ? 'Thank you for voting!' : 'Downvote'}
 					</button>
